@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseProjeVizeModelStoreContainer" CdmEntityContainer="DatabaseProjeVizeEntities">
+    <EntitySetMapping Name="Egitim">
+      <EntityTypeMapping TypeName="DatabaseProjeVizeModel.Egitim">
+        <MappingFragment StoreEntitySet="Egitim">
+          <ScalarProperty Name="egitimId" ColumnName="egitimId" />
+          <ScalarProperty Name="egitimAdi" ColumnName="egitimAdi" />
+          <ScalarProperty Name="egitimKatId" ColumnName="egitimKatId" />
+          <ScalarProperty Name="egitimiVerenId" ColumnName="egitimiVerenId" />
+          <ScalarProperty Name="egitimUcretliMi" ColumnName="egitimUcretliMi" />
+          <ScalarProperty Name="egitimFoto" ColumnName="egitimFoto" />
+          <ScalarProperty Name="egitimAciklamasi" ColumnName="egitimAciklamasi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="DatabaseProjeVizeModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="katId" ColumnName="katId" />
+          <ScalarProperty Name="katAdi" ColumnName="katAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="DatabaseProjeVizeModel.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayitId" ColumnName="kayitId" />
+          <ScalarProperty Name="kayitKullaniciId" ColumnName="kayitKullaniciId" />
+          <ScalarProperty Name="kayitEgitimId" ColumnName="kayitEgitimId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici">
+      <EntityTypeMapping TypeName="DatabaseProjeVizeModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorum">
+      <EntityTypeMapping TypeName="DatabaseProjeVizeModel.Yorum">
+        <MappingFragment StoreEntitySet="Yorum">
+          <ScalarProperty Name="yorumIcerigi" ColumnName="yorumIcerigi" />
+          <ScalarProperty Name="yorumId" ColumnName="yorumId" />
+          <ScalarProperty Name="yorumYapanId" ColumnName="yorumYapanId" />
+          <ScalarProperty Name="yorumYapilanEgitimId" ColumnName="yorumYapilanEgitimId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

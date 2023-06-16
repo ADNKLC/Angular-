@@ -1,0 +1,32 @@
+mat-card{
+    width: 47%;
+    padding: 50px;
+    font-size:medium;
+}
+mat-card-content{
+    margin-top:25px;
+}
+
+button{
+    margin-top:8px;
+}
+
+table{
+    width: 47%;
+}
+
+.kirk{
+    width: 47%;
+    margin-left:26px;
+}
+
+.container{
+    display: flex;
+}
+
+h2{
+    text-align: center;
+    margin: 20px;
+    font-size: x-large;
+    font-weight: 400;
+}

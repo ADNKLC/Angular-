@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseProjeVizeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Egitim">
+    <Key>
+      <PropertyRef Name="egitimId" />
+    </Key>
+    <Property Name="egitimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="egitimAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="egitimKatId" Type="int" Nullable="false" />
+    <Property Name="egitimiVerenId" Type="int" Nullable="false" />
+    <Property Name="egitimUcretliMi" Type="int" Nullable="false" />
+    <Property Name="egitimFoto" Type="nvarchar" MaxLength="100" />
+    <Property Name="egitimAciklamasi" Type="nvarchar" MaxLength="550" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="katId" />
+    </Key>
+    <Property Name="katId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="katAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayitId" />
+    </Key>
+    <Property Name="kayitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kayitKullaniciId" Type="int" Nullable="false" />
+    <Property Name="kayitEgitimId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="adSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="foto" Type="nvarchar" MaxLength="50" />
+    <Property Name="rol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yorum">
+    <Key>
+      <PropertyRef Name="yorumId" />
+    </Key>
+    <Property Name="yorumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yorumYapanId" Type="int" Nullable="false" />
+    <Property Name="yorumYapilanEgitimId" Type="int" Nullable="false" />
+    <Property Name="yorumIcerigi" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Egitim_ToKategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Egitim" Type="Self.Egitim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="katId" />
+      </Principal>
+      <Dependent Role="Egitim">
+        <PropertyRef Name="egitimKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Egitim_ToKullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Egitim" Type="Self.Egitim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Egitim">
+        <PropertyRef Name="egitimiVerenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToEgitim">
+    <End Role="Egitim" Type="Self.Egitim" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Egitim">
+        <PropertyRef Name="egitimId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitEgitimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToKullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitKullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_ToEgitim">
+    <End Role="Egitim" Type="Self.Egitim" Multiplicity="1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Egitim">
+        <PropertyRef Name="egitimId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="yorumYapilanEgitimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_ToKullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="yorumYapanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseProjeVizeModelStoreContainer">
+    <EntitySet Name="Egitim" EntityType="Self.Egitim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Egitim_ToKategori" Association="Self.FK_Egitim_ToKategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Egitim" EntitySet="Egitim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Egitim_ToKullanici" Association="Self.FK_Egitim_ToKullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Egitim" EntitySet="Egitim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToEgitim" Association="Self.FK_Kayit_ToEgitim">
+      <End Role="Egitim" EntitySet="Egitim" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToKullanici" Association="Self.FK_Kayit_ToKullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_ToEgitim" Association="Self.FK_Yorum_ToEgitim">
+      <End Role="Egitim" EntitySet="Egitim" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_ToKullanici" Association="Self.FK_Yorum_ToKullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

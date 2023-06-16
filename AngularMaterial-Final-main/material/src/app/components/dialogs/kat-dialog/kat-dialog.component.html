@@ -1,0 +1,12 @@
+<div class="container">
+ <form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <input type="text" matInput placeholder="Kategori ismini düzenleyin" #eklenecekKategori  formControlName="katAdi" required name="katAdi">
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <button mat-fab matTooltip="Onayla" style="margin: 2px 0px 8px 2px;" color="primary" (click)="dialogRef.close(form.value)" [disabled]="form.invalid" ><mat-icon>done</mat-icon></button>
+  &nbsp;
+  <button mat-fab matTooltip="Vazgeç" style="margin: 2px 0px 8px 2px;" color="warn" (click)="dialogRef.close()"><mat-icon>cancel</mat-icon></button>
+ </form>
+
+</div>

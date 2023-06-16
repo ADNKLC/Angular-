@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container{
+    margin:20px 10px 10px 20px
+}
+
+.ortala{
+	margin:0 auto 0 auto;
+	display:table;
+}
+
+.kartım{
+	display:flex;
+	flex-wrap: wrap;
+	margin:10px;
+	padding: 8px;
+}
+
+.kartım2{
+	flex: 0 0 20%; /* İçeriklerin eşit genişlikte olmasını sağlar. İhtiyaca göre ayarlayabilirsiniz. */
+	float: left;
+	margin:15px;
+}
+
+h1{
+	text-align: center;
+	margin:15px 0px 8px 0px;
+	padding: 25px 10px 10px 10px;
+	font-size: larger;
+}

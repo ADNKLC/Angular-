@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Eğitimi Alan Kullanıcılar</h1>
+  <p *ngIf="seciliEgitim"><b>{{seciliEgitim.egitimAdi}}</b> isimli eğitimi alan kullanıcılar aşağıdadır.</p>
+  <button mat-fab matTooltip="Geri gel" routerLink="/egitimler"><mat-icon>arrow_back</mat-icon></button>
+  &nbsp; &nbsp;
+  <button *ngIf="aktifKullanici?.rol == 0" mat-fab  matTooltip="Eğitime bir kullanıcı ekle" (click)="ekle()"><mat-icon>person_add</mat-icon></button>
+
+
+  <table mat-table #table [dataSource]="dataSource"  style="text-align: center;" matSort>
+
+    <ng-container matColumnDef="foto">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fotoğraf </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> 
+      
+      <img [src]="servis.siteUrl + '/Dosyalar/kullanici/'+kullanici.kullaniciBilgi.foto" style="width: 80px;">
+      
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kullaniciId">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;" mat-sort-header> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kullanıcı ID </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> <span *ngIf="aktifKullanici?.rol == 0"> {{kullanici.kullaniciBilgi.kullaniciId}}</span> <span *ngIf="aktifKullanici?.rol == 1">**</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kullaniciAdi">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;" mat-sort-header> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kullanıcı Adı </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> {{kullanici.kullaniciBilgi.kullaniciAdi}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> E-Mail </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> {{kullanici.kullaniciBilgi.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sifre">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Şifre </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> <span *ngIf="aktifKullanici?.rol == 0"> {{kullanici.kullaniciBilgi.sifre}}</span> <span *ngIf="aktifKullanici?.rol == 1">***** </span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adSoyad">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;" mat-sort-header>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ad Soyad </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> {{kullanici.kullaniciBilgi.adSoyad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;" > Rol </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;" style="text-align: center;" > 
+        <button mat-fab color="warn" *ngIf="kullanici.kullaniciBilgi.rol == 0">Admin</button>
+        <button mat-fab color="accent" *ngIf="kullanici.kullaniciBilgi.rol == 1">Eğitmen</button>
+        <button mat-fab color="primary" *ngIf="kullanici.kullaniciBilgi.rol == 2">Kullanıcı</button>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="islemler" >
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;"> İşlemler </th>
+      <td mat-cell *matCellDef="let kullanici" style="text-align: center;"> 
+        
+      <button mat-icon-button matTooltip="Kullanıcıyı Eğitimden Çıkar" color="warn" (click)="kayitSil(kullanici)"><mat-icon>delete</mat-icon></button>
+      
+
+      
+
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+  </table>
+
+
+</div>

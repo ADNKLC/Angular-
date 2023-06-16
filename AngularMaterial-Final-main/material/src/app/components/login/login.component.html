@@ -1,0 +1,74 @@
+<div class="container">
+
+  <mat-card class="login">
+    <mat-card-title class="girisyapyazi">Giriş Yap</mat-card-title>
+    <p></p>
+<mat-card-content class="loginicerik">
+<form>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanıcı Adı</mat-label>
+      <input type="text" matInput placeholder="Kullanıcı Adı" required #kAdi>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Şifre</mat-label>
+      <input type="password" matInput placeholder="Şifre" required #parola >
+    </mat-form-field>
+  </p>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button color="primary" type="button" (click)="oturumAc(kAdi.value,parola.value)" style="width: 100%;">Oturum Aç</button>
+</form>
+</mat-card-content>
+</mat-card>
+
+
+<mat-card class="kayit">
+  <mat-card-title>Kayıt Ol</mat-card-title>
+  <p></p>
+<mat-card-content>
+
+<form>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Ad Soyad</mat-label>
+    <input type="text" matInput placeholder="Kullanıcı Adı" required #adSoyad>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Kullanıcı Adı</mat-label>
+    <input type="text" matInput placeholder="Şifre" required #kullaniciAdi >
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Şifre</mat-label>
+    <input type="password" matInput placeholder="Şifre" required #sifre >
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>E-Posta</mat-label>
+    <input type="text" matInput placeholder="E-Mail" required #email >
+  </mat-form-field>
+</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button mat-raised-button color="primary" type="button" (click)="kayitOl(adSoyad.value,kullaniciAdi.value,sifre.value,email.value)" style="width: 100%;">Kayıt Ol</button>
+
+</form>
+</mat-card-content>
+</mat-card>
+
+
+
+
+
+</div>

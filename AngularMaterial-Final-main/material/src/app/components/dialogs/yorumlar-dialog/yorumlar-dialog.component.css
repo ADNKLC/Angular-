@@ -1,0 +1,25 @@
+.imgkucuk{
+    width: 45px;
+    border-radius: 35px;
+}
+
+.deneme{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 0px;
+
+}
+
+.bizimbuton{
+    margin-left: 20px;
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 8px;
+    margin-right: 0px;
+
+}
+
+:root{
+   position: fixed;
+}

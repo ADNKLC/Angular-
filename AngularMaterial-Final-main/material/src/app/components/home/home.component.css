@@ -1,0 +1,27 @@
+h1{
+    font-size: 3.5vw;
+    font-weight: 300;
+    margin: 25px;
+}
+
+mat-card{
+
+    margin: 60px 20px 20px 34px;
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+h2{
+    text-align: center;
+    margin-top: 20px;
+}
+
+p{
+    text-align: center;
+    margin-top:15px;
+    font-size:1vw;
+    font-weight: 200;
+    line-height: 1.6; 
+    padding: 10px 25px 10px 25px;
+}

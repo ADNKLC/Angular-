@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+
+
+<div class="container">
+ 
+  <form [formGroup]="form">
+     
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanıcı Adı</mat-label>
+      <input matInput placeholder="Kullanıcı Adı" formControlName="kullaniciAdi" name="kullaniciAdi" required type="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>E-Posta</mat-label>
+      <input matInput placeholder="E Posta Adresi" formControlName="email" name="email" required type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Şifre</mat-label>
+      <input matInput placeholder="Şifre" formControlName="sifre" name="sifre" required type="password">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ad Soyad</mat-label>
+      <input matInput placeholder="Adı Soyadı" formControlName="adSoyad" name="adSoyad" required type="text">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Rol</mat-label>
+      <mat-select placeholder="Rol Seçiniz" formControlName="rol" name="rol" required>
+        <mat-option [value] = 0 *ngIf="aktifKullanici?.rol == 0"> Admin  </mat-option>
+        <mat-option [value] = 1 *ngIf="aktifKullanici?.rol == 0"> Eğitmen  </mat-option>
+        <mat-option [value] = 2 *ngIf="aktifKullanici?.rol == 0"> Standart Kullanıcı  </mat-option>
+        <mat-option [value] = aktifKullanici?.rol *ngIf="aktifKullanici?.rol == 1 || aktifKullanici?.rol == 2">
+        <span *ngIf="aktifKullanici?.rol == 1">Eğitmen</span>   
+        <span *ngIf="aktifKullanici?.rol == 2">Standart Kullanıcı</span>   
+        </mat-option>
+      
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+
+  <button mat-raised-button color="primary" (click)="dialogRef.close(form.value)" [disabled]="form.invalid" style="width: 47%;">Kaydet</button>
+  &nbsp; &nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()" style="width: 47%;">Vazgeç</button>
+
+</div>

@@ -1,0 +1,60 @@
+<h1>Eğitimler</h1>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button *ngIf="aktifKullanici?.rol == 0 || aktifKullanici?.rol == 1" mat-fab matTooltip="Eğitim Ekle" (click)="egitimEkle()"><mat-icon>add</mat-icon></button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<mat-form-field appearance="outline" style="width: 35%;">
+  <mat-label>
+    Kategori Seç
+  </mat-label>
+  <mat-select placeholder="Kategori Seç" #kategori>
+    <mat-option [value]=99999>Tümü</mat-option>
+    <mat-option *ngFor="let kat of kategoriler" [value]="kat.katId">
+      {{kat.katAdi}}
+    </mat-option>
+
+  </mat-select>
+</mat-form-field>
+&nbsp;&nbsp;
+<button mat-raised-button color="primary" (click)="kategorilereGoreListele(kategori.value)">Listele</button>
+<div class="kartım">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  <mat-card *ngFor="let egitim of egitimler" class="kartım2">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon *ngIf="egitim?.egitimUcretliMi == 1" color="accent" matTooltip="Ücretli">euro</mat-icon>
+        <mat-icon *ngIf="egitim?.egitimUcretliMi == 0" color="primary" matTooltip="Ücretsiz">done</mat-icon>
+      </div>
+      <mat-card-title>{{egitim.egitimAdi}}</mat-card-title>
+      <mat-card-subtitle>{{egitim.egitimKatAdi}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="servis.yetkiKontrol(['Admin']) || aktifKullanici?.kullaniciId == egitim?.egitimiVerenId " mat-card-image [src]="servis.siteUrl + '/Dosyalar/egitim/'+egitim.egitimFoto" style="width: 300px;"
+      matTooltip="Fotoğrafı Düzenlemek İçin Tıklayınız" (click)="fotoGuncelle(egitim)">
+      <img *ngIf="servis.yetkiKontrol(['Uye','Egitmen']) && aktifKullanici?.kullaniciId !== egitim?.egitimiVerenId"  mat-card-image [src]="servis.siteUrl + '/Dosyalar/egitim/'+egitim.egitimFoto" style="width: 300px;">
+    <mat-card-content>
+      &nbsp;
+      <p><b>Eğitmen: </b>{{egitim.egitimiVerenKullanici.adSoyad}}</p>
+
+      <p>
+        {{egitim.egitimAciklamasi}}
+      </p>
+      &nbsp;
+    </mat-card-content>
+    <mat-card-actions>
+      <button  mat-flat-button color="primary" style="width: 47%;" (click)="egitimKaydiYap(egitim)">Eğitimi Al</button>
+      &nbsp;&nbsp;
+      <button mat-flat-button color="accent" style="width: 47%;" (click)="yorumlariAc(egitim)">Yorumlar</button>
+    </mat-card-actions>
+
+
+    
+
+
+    <mat-card-actions *ngIf="servis.yetkiKontrol(['Admin']) || aktifKullanici?.kullaniciId == egitim?.egitimiVerenId ">
+      <button mat-icon-button color="primary" style="width: 33%;" matTooltip="Eğitimi Alanları Göster" [routerLink]="['/kullanicilistele',egitim.egitimId]" ><mat-icon>people</mat-icon></button>     
+      <button mat-icon-button color="accent" style="width: 33%;" matTooltip="Eğitimi Düzenle" (click)="egitimDuzenle(egitim)" ><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button color="warn" style="width: 33%;" matTooltip="Eğitimi Sil" (click)="egitimSil(egitim)"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

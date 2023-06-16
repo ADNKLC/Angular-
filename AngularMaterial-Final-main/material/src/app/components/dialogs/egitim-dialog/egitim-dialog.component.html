@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+
+
+<div class="container" >
+ 
+  <form [formGroup]="form">
+     
+    <mat-form-field appearance="outline"  style="width: 100%;">
+      <mat-label>Eğitim Adı</mat-label>
+      <input matInput placeholder="Eğitim Adı" formControlName="egitimAdi" name="egitimAdi" required type="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline"  style="width: 100%;">
+      <mat-label>Kategori</mat-label>
+      <mat-select placeholder="Kategori Seçiniz" formControlName="egitimKatId" name="egitimKatId" required>
+        <mat-option *ngFor="let kat of kategoriler" [value] = kat.katId >{{kat.katAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"  style="width: 100%;">
+      <mat-label>Eğitmen</mat-label>
+      <mat-select placeholder="Eğitmen Seçiniz" formControlName="egitimiVerenId" name="egitimiVerenId" required>
+        <span  *ngIf="aktifKullanici?.rol == 0" ><mat-option *ngFor="let egitmen of egitmenler" [value] = egitmen.kullaniciId >{{egitmen.adSoyad}}</mat-option></span>
+        <mat-option *ngIf="aktifKullanici?.rol == 1" [value] = aktifKullanici?.kullaniciId>{{aktifKullanici?.adSoyad}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Ücretli Mi</mat-label>
+      <mat-select placeholder="Ücretli Mi ?" formControlName="egitimUcretliMi" name="egitimUcretliMi" required>
+        <mat-option [value] = 0> Ücretsiz  </mat-option>
+        <mat-option [value] = 1> Ücretli  </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field  style="width: 100%;">
+      <mat-label>Eğitim Açıklaması</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="4"
+                cdkAutosizeMaxRows="10"
+                formControlName="egitimAciklamasi" name="egitimAciklamasi" required 
+                ></textarea>
+    </mat-form-field>
+
+
+
+  </form>
+
+  <button mat-raised-button color="primary" (click)="dialogRef.close(form.value)" [disabled]="form.invalid"  style="width: 47%;">Kaydet</button>
+  &nbsp; &nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()"  style="width: 47%;">Vazgeç</button>
+
+</div>

@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/']">Ana Sayfa</a>
+      <a mat-list-item [routerLink]="['/login']" *ngIf="!servis.oturumKontrol()">Oturum Aç</a>
+      <a mat-list-item [routerLink]="['/profil']" *ngIf="servis.oturumKontrol()">Profil</a>
+      <a mat-list-item [routerLink]="['/kullanicilar']" *ngIf="servis.yetkiKontrol(['Admin'])">Kullanıcılar</a>
+      <a mat-list-item [routerLink]="['/kategoriler']" *ngIf="servis.yetkiKontrol(['Admin'])">Kategoriler</a>
+      <a mat-list-item [routerLink]="['/egitimler']" *ngIf="servis.oturumKontrol()">Eğitimler</a>
+      <a mat-list-item (click)="oturumKapat()" *ngIf="servis.oturumKontrol()">Oturumu Kapat</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z10">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">Menü</mat-icon>
+      </button>
+      <span>MyDemy</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

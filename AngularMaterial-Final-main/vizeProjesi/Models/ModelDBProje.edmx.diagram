@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44292395c2da44cbbdde752f37d23568" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseProjeVizeModel.Egitim" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseProjeVizeModel.Kategori" Width="1.5" PointX="5.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseProjeVizeModel.Kayit" Width="1.5" PointX="8.125" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseProjeVizeModel.Kullanici" Width="1.5" PointX="0.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseProjeVizeModel.Yorum" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Egitim_ToKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Egitim_ToKullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Kayit_ToEgitim" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Yorum_ToEgitim" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Kayit_ToKullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseProjeVizeModel.FK_Yorum_ToKullanici" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

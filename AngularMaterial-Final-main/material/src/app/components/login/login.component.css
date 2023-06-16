@@ -1,0 +1,55 @@
+host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+    
+  }
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+
+mat-card-title{
+    display: flex;
+    justify-content: center;
+    margin:20px 0px 10px 0px;
+    font-size:2vw;
+    font-weight: 300;
+}
+
+mat-card{
+    width: 40%;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 1px deeppink;
+    min-height: 400px;
+    margin: 10px 40px 10px 40px;
+}
+
+.kayit{
+
+    display: flex;
+    overflow:auto;
+    width: 40%;
+
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+}
+
+.loginicerik{
+    margin: auto;
+}
+
+.girisyapyazi{
+    font-size: 2.4vw;
+    margin: 60px 0px 0px 0px;
+}
